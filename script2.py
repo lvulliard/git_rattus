@@ -17,19 +17,8 @@ m = len(a)
 # Adjacence matrix
 c = loadtxt('adj_matrix')
 
-cd = [0.0] * n
-# Protein with the biggest cd
-# First value is the maximum, and the second is the index
-maxcd = [0,-1]
-for i in range(0, n):
-	cd[i] += sum(c[:,i])
-	cd[i] /= n-1
-	if(cd[i] > maxcd[0]):
-		maxcd[1] = i
-		maxcd[0] = cd[i]
-
-print("La protéine avec le plus grand degré est la protéine : ")
-print(b[maxcd[1]])
-
+eigval, eigvect = linalg.eig(c)
+#First value is the biggest
+eigvect[:,0]
 
 # See linalg.eig
