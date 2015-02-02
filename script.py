@@ -19,12 +19,28 @@ m = len(a)
 # Adjacence matrix
 c = zeros((n, n), dtype = int)
 
-# Boucle de P. Grobatar
 for i in range(0, n):
 	for j in range(0, m):
 		if(b[i] == a[j,1]):
 			c[(b.tolist()).index(a[j,2]),i] +=1
-			c[i,(b.tolist()).index(a[j,2])] +=1
 		if(b[i] == a[j,2]):
 			c[(b.tolist()).index(a[j,1]),i] +=1
-			c[i,(b.tolist()).index(a[j,1])] +=1
+
+savetxt('matrixa', c, delimiter=' ', fmt='%i')
+
+
+cd = [0.0] * n
+# Protein with the biggest cd
+# First value is the maximum, and the second is the index
+maxcd = [0,-1]
+for i in range(0, n):
+	cd[i] += sum(c[:,i])
+	cd[i] /= n-1
+	if(cd[i] > maxcd[0]):
+		maxcd[1] = i
+		maxcd[0] = cd[i]
+
+print("La protéine avec le plus grand degré est la protéine : ")
+print(b[maxcd[1]])
+
+
