@@ -9,6 +9,7 @@ a = loadtxt(f, skiprows = 1, usecols = (0,1,2), dtype = int)
 b = concatenate((a[:,1],a[:,2]),axis=0)
 b = unique(b)
 b.sort() 
+savetxt('prot_list', b, delimiter=' ', fmt='%i')
 
 # Number of proteins
 n = len(b)
@@ -26,7 +27,7 @@ for i in range(0, n):
 		if(b[i] == a[j,2]):
 			c[(b.tolist()).index(a[j,1]),i] +=1
 
-savetxt('matrixa', c, delimiter=' ', fmt='%i')
+savetxt('adj_matrix', c, delimiter=' ', fmt='%i')
 
 
 cd = [0.0] * n

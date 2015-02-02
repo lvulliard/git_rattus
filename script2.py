@@ -6,9 +6,7 @@ f = open('rattus.txt', 'r')
 a = loadtxt(f, skiprows = 1, usecols = (0,1,2), dtype = int)
 
 # List of unique proteins
-b = concatenate((a[:,1],a[:,2]),axis=0)
-b = unique(b)
-b.sort() 
+b = loadtxt('prot_list', dtype= int)
 
 # Number of proteins
 n = len(b)
@@ -17,7 +15,7 @@ n = len(b)
 m = len(a)
 
 # Adjacence matrix
-c = loadtxt('matrixa')
+c = loadtxt('adj_matrix')
 
 cd = [0.0] * n
 # Protein with the biggest cd
@@ -32,5 +30,6 @@ for i in range(0, n):
 
 print("La protéine avec le plus grand degré est la protéine : ")
 print(b[maxcd[1]])
+
 
 # See linalg.eig
