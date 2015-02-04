@@ -19,6 +19,20 @@ c = loadtxt('adj_matrix')
 
 eigval, eigvect = linalg.eig(c)
 #First value is the biggest
-eigvect[:,0]
+
+ce = [0.0] * n
+# Protein with the biggest cd
+# First value is the maximum, and the second is the index
+maxce = [0,-1]
+for i in range(0, n):
+	ce[i] += eigvect[i,0]
+	if(ce[i] > maxce[0]):
+		maxce[1] = i
+		maxce[0] = ce[i]
+
+print("La protéine avec la plus grande centralité par valeur propre est la protéine : ")
+print(b[maxce[1]])
+
+savetxt('ce_matrix', eigvect[:,0], delimiter=' ', fmt='%.5f')
 
 # See linalg.eig

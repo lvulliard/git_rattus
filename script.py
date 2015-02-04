@@ -44,4 +44,5 @@ for i in range(0, n):
 print("La protéine avec le plus grand degré est la protéine : ")
 print(b[maxcd[1]])
 
+savetxt('cd_matrix', cd, delimiter=' ', fmt='%.5f')
 
