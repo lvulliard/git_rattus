@@ -33,6 +33,6 @@ for i in range(0, n):
 print("La protéine avec la plus grande centralité par valeur propre est la protéine : ")
 print(b[maxce[1]])
 
-savetxt('ce_matrix', eigvect[:,0], delimiter=' ', fmt='%.5f')
+savetxt('ce_matrix', eigvect[:,0].real, delimiter=' ', fmt='%.5f')
 
 # See linalg.eig
